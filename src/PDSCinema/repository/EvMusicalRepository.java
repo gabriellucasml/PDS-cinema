@@ -9,19 +9,19 @@ import java.util.List;
 
 public class EvMusicalRepository extends EventoRepository{
 
-    private static List<Show> ShowEmCartaz = new ArrayList<>();
+    private static List<Show> ShowsEmCartaz = new ArrayList<>();
     private static List<Integer> avaliacaoesShow = new ArrayList<>();
     private static int qntAvaliacoesShow;
     private static int avaliacoesLocal;
     private static int qntAvaliacoesLocal;
 
    
-    public static List<Show> getShowEmCartaz() {
+    public static List<Show> getShowsEmCartaz() {
         return ShowEmCartaz;
     }
 
-    public static void setShowEmCartaz(List<Show> ShowEmCartaz) {
-        EvMusicalRepository.ShowEmCartaz = ShowEmCartaz;
+    public static void setShowsEmCartaz(List<Show> ShowsEmCartaz) {
+        EvMusicalRepository.ShowsEmCartaz = ShowEmCartaz;
     }
 
 }
