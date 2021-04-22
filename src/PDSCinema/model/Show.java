@@ -1,6 +1,6 @@
 package PDSCinema.model;
 
-public class Show {
+public class Show extends Evento{
   
     private static String atracaoMusical;
     private static String data;
