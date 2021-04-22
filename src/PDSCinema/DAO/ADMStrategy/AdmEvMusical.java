@@ -16,6 +16,6 @@ public class AdmEvMusical extends AdmStrategyAbstractEvento {
 
     @Override
     public void removerEvento(Evento evento){
-
+        EvMusicalRepository.getShowsEmCartaz().remove(evento);
     }
 }
