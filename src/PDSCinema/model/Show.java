@@ -3,7 +3,6 @@ package PDSCinema.model;
 public class Show {
   
     private static String atracaoMusical;
-    private static String duracao;
     private static String data;
     private static List<Integer> avaliacaoesShow = new ArrayList<>();
     private static int qntAvaliacoesShow;
