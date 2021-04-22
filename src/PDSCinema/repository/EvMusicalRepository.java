@@ -13,7 +13,7 @@ public class EvMusicalRepository extends EventoRepository{
 
    
     public static List<Show> getShowEmCartaz() {
-        return filmesEmCartaz;
+        return ShowEmCartaz;
     }
 
     public static void setShowEmCartaz(List<Show> ShowEmCartaz) {
