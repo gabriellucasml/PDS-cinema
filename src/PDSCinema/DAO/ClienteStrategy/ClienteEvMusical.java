@@ -8,7 +8,7 @@ public class ClienteEvMusical extends ClienteStrategyEventoDAO{
 
     @Override
     public int inserirAvaliacaoHorario(String horario, int avaliacao) throws IOException {
-        return 0;
+        return 1;
     }
 
 }
