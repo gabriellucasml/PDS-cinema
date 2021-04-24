@@ -1,13 +1,13 @@
 package PDSCinema.DAO;
 
-import PDSCinema.DAO.ADMStrategy.AdmCinema;
-import PDSCinema.DAO.ClienteStrategy.ClienteCinema;
+import PDSCinema.DAO.ADMStrategy.AdmEvMusical;
+import PDSCinema.DAO.ClienteStrategy.ClienteEvMusical;
 import PDSCinema.DAO.ClienteStrategy.ClienteStrategyEventoDAO;
 import PDSCinema.DAO.ADMStrategy.AdmStrategyAbstractEvento;
 
 public abstract class SingletonEventoDAO {
-    private static AdmStrategyAbstractEvento admStrategyAbstractEvento = new AdmCinema();
-    private static ClienteStrategyEventoDAO clienteStrategyEventoDAO = new ClienteCinema();
+    private static AdmStrategyAbstractEvento admStrategyAbstractEvento = new AdmEvMusical();
+    private static ClienteStrategyEventoDAO clienteStrategyEventoDAO = new ClienteEvMusical();
     private static AdministradorDAO adm = new AdministradorDAOmemoria(admStrategyAbstractEvento);
     private static ClienteDAO cliente = new ClienteDAOmemoria(clienteStrategyEventoDAO);
     private static EventoDAO evento = new EventoDAOmemoria();
