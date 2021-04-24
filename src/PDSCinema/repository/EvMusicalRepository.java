@@ -21,6 +21,15 @@ public class EvMusicalRepository extends EventoRepository{
     public static void setShowsEmCartaz(List<Show> ShowsEmCartaz) {
         EvMusicalRepository.ShowsEmCartaz = ShowEmCartaz;
     }
+    public static int getAvaliacoesLocal() {
+        return avaliacoesLocal;
+    }
+
+    public static void setAvaliacoesLocal(int avaliacoes) {
+        EvMusicalRepository.avaliacoesLocal = avaliacoesLocal + avaliacoes;
+        EvMusicalRepository.qntAvaliacoesLocal = qntAvaliacoesLocal +1;
+    }
+    
 
 }
 
