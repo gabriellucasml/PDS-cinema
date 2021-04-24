@@ -155,4 +155,7 @@ public class ClienteService implements iClienteService{
 	public ClienteCinema getClienteCinema() {
 		return clienteCinema;
 	}
+	public ClienteEvMusical getClienteEvMusical() {
+		return clienteEvMusical;
+	}
 }
