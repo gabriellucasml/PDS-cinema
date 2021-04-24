@@ -5,9 +5,14 @@ import PDSCinema.model.Evento;
 
 public class InserirAvaliacaoEvento {
     public void inseriAvaliacaoEvento(Evento evento, int avaliacao) {
-        SingletonEventoDAO.getClienteStrategyEventoDAO().inserirAvaliacaoEvento(evento, avaliacao);
+       
     }
-    public void inseriAvaliacaoEvento(Evento evento, int avaliacaoShow, int avaliacaoLocal) {
-        SingletonEventoDAO.getClienteStrategyEventoDAO().inserirAvaliacaoEvento(evento, avaliacaoShow, avaliacaoLocal);
+    public void inseriAvaliacaoEvento(Evento evento,int avaliacao, int avaliacaoLocal) {
+        int avaliacoes = evento.getAvaliacoes();
+        evento.setAvaliacoes(avaliacoes+avaliacao);
+        evento.setQuantAvaliacoes(evento.getQuantAvaliacoes()+1);
+        int avaliacaoL =  EvMusicalRepository.getAvaliacoesLocal();
+        EvMusicalRepository.setAvaliacoesLocal(avaliacaoL + avaliacaoLocal);
+        EvMusicalRepository.QntAvaliacoesLocal(1 + getQntAvaliacoesLocal());
     }
 }
