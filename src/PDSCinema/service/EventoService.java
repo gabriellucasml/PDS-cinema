@@ -17,7 +17,7 @@ import java.util.List;
 
 public class EventoService implements iEventoService {
     private EventoDAO eventoDAO = SingletonEventoDAO.getEvento();
-    private EventoCinema evento = new EventoCinema();
+    private EventoEvMusical evento = new EventoEvMusical();
 
 
 	public ArrayList<String> calcularRanking(List<Evento> listaDeEventos){
@@ -138,6 +138,10 @@ public class EventoService implements iEventoService {
     @Override
     public Double calcularMediaAvaliacaoServico(int avaliacoesServico, int quantAvServico){
     	 return ((double)avaliacoesServico/(double)quantAvServico);
+    }
+	
+    public Double calcularMediaAvaliacaoLocal(int avaliacoesLocal, int quantAvLocal){
+    	 return ((double)avaliacoesLocal/(double)quantAvLocal);
     }
 
 	@Override

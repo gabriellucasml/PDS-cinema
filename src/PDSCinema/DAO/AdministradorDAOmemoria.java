@@ -18,9 +18,6 @@ public class AdministradorDAOmemoria implements AdministradorDAO{
         this.admStrategyAbstractEvento = admStrategyAbstractEvento;
     }
 
-    public void cadastrarEvento(CircoRepository c){}
-    public void cadastrarEvento(EventoRepository e){}
-
 
     @Override
     public void cadastrarCupons(String _Cupom, double tipoDeCupom){

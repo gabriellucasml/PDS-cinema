@@ -3,31 +3,30 @@ package PDSCinema.Controller;
 import PDSCinema.model.Evento;
 import PDSCinema.service.AdmPolimorfismo.CadastrarEvento;
 import PDSCinema.model.Cupom;
-import PDSCinema.model.Filme;
+import PDSCinema.model.Show;
 import PDSCinema.model.Premio;
-import PDSCinema.repository.CinemaRepository;
-import PDSCinema.service.AdmStrategy.AdmCinema;
+import PDSCinema.repository.EvMusicalRepository;
+import PDSCinema.service.AdmStrategy.AdmEvMusical;
 import PDSCinema.service.AdministradorService;
 
 import java.util.ArrayList;
 
 public class AdministradorController {
-    private AdmCinema admCinema = new AdmCinema();
+    private AdmEvMusical admEvMusical = new AdmEvMusical();
     private final AdministradorService adm;
     public AdministradorController(){
         this.adm = new AdministradorService();
     }
-    public String cadastrarEvento(String name, int duracao, String sinopse, String classificacaoIndicativa, String genero,
-                        String diaDeEstreia){
-        int status = adm.getCadastrarEvento().cadastrarEvento(name, duracao, sinopse, classificacaoIndicativa, genero, diaDeEstreia);
+    public String cadastrarEvento(String name, int duracao, String atracaoMusical, String data){
+        int status = adm.getCadastrarEvento().cadastrarEvento(name, duracao, atracaoMusical, data);
         if(status == 0){
-            return ("Filme cadastrado com sucesso");
+            return ("Show cadastrado com sucesso");
         }else if(status == -1){
             return ("A duração não pode ser menor que 0!");
         }else if(status == -2){
             return ("Algum valor passado está nulo!");
         }
-        return "Filme não cadastrado!";
+        return "Show não cadastrado!";
     }
     public String cadastrarCupons(String _Cupom, double tipoDeCupom){
         int status = adm.cadastrarCupons(_Cupom, tipoDeCupom);
@@ -49,16 +48,9 @@ public class AdministradorController {
     }
 
     public Evento buscarEvento(String nome){
-        Evento evento = admCinema.buscarEvento(nome);
+        Evento evento = admEvMusical.buscarEvento(nome);
         if(evento != null){
             return evento;
-        }
-        return null;
-    }
-    public ArrayList<Filme> buscarFilmeGenero(String genero){
-        ArrayList<Filme> filmes = admCinema.buscarFilmeGenero(genero);
-        if(filmes != null){
-            return filmes;
         }
         return null;
     }
@@ -78,11 +70,11 @@ public class AdministradorController {
     }
 
     public String removerEvento(Evento evento){
-        int status = admCinema.removerEvento(evento);
+        int status = admEvMusical.removerEvento(evento);
         if(status == 0){
-            return ("Filme removido com sucesso");
+            return ("Show removido com sucesso");
         }else{
-            return ("Filme não cadastrado!");
+            return ("Show não cadastrado!");
         }
     }
     public String removerCupons(Cupom cupom){

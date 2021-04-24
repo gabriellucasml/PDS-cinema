@@ -2,9 +2,9 @@ package PDSCinema.service;
 
 
 import PDSCinema.model.Administrador;
-import PDSCinema.repository.CinemaRepository;
+import PDSCinema.repository.EvMusicalRepository;
 import PDSCinema.model.Cliente;
-import PDSCinema.model.Filme;
+import PDSCinema.model.Administrador;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +19,7 @@ public interface iEventoService {
     Administrador buscarADM(String cpf);
     List <Administrador> buscarTodosADM();
     Double calcularMediaAvaliacaoServico(int avaliacoesServico, int quantAvServico);
+    Double calcularMediaAvaliacaoLocal(int avaliacoesLocal, int quantAvLocal)
     List<Double> calcularMediaAvaliacaoHorario(List<Integer> avaliacoesHorarios, List<Integer> quantAvHorarios);
     ArrayList<String> calcularRankingHorarios(List<String> horarios, List<Integer> avaliacoesHorarios, List<Integer> quantAvHorarios);
 }

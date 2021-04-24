@@ -3,7 +3,7 @@ package PDSCinema.Controller;
 import PDSCinema.model.*;
 import PDSCinema.service.ClientePolimorfismo.InserirAvaliacaoEvento;
 import PDSCinema.service.ClienteService;
-import PDSCinema.service.ClienteStrategy.ClienteCinema;
+import PDSCinema.service.ClienteStrategy.ClienteEvMusical;
 
 public class ClienteController {
 
@@ -13,14 +13,6 @@ public class ClienteController {
     }
     public String avaliarServico(int avaliacao){
         int status = cliente.inserirAvaliacaoServico(avaliacao);
-        if(status == 0){
-            return ("Avaliação cadastrada");
-        }else{
-            return ("Avaliação inválida!");
-        }
-    }
-    public String avaliarHorario(String horario ,int avaliacao){
-        int status = cliente.inseriAvaliacaoHorario(horario, avaliacao);
         if(status == 0){
             return ("Avaliação cadastrada");
         }else{
@@ -43,8 +35,8 @@ public class ClienteController {
             return "- " + status;
         }
     }
-    public String avaliarEvento(Evento evento, int avaliacao){
-        int status = cliente.getInserirAvaliacaoEvento().inserirAvaliacaoEvento(evento, avaliacao);
+    public String avaliarEvento(Evento evento, int avaliacao, int avaliacaoLocal){
+        int status = cliente.getInserirAvaliacaoEvento().inserirAvaliacaoEvento(evento, avaliacao, avaliacaoLocal);
         if(status == 0){
             return ("Avaliação cadastrada com sucesso");
         }else {
