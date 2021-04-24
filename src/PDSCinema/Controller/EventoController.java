@@ -3,7 +3,7 @@ package PDSCinema.Controller;
 import PDSCinema.model.Administrador;
 import PDSCinema.model.Cliente;
 import PDSCinema.model.Evento;
-import PDSCinema.model.Filme;
+import PDSCinema.model.Show;
 import PDSCinema.service.EventoService;
 
 import java.util.ArrayList;
@@ -98,10 +98,18 @@ public class EventoController {
             return -1.0;
         }
     }
-    public List<Double> calcularMediaAvaliacaoFilmes(List<Filme> filmes){
+    public Double calcularMediaAvaliacaoLocal(int avaliacoesLocal, int quantAvLocal){
+        Double media = evento.calcularMediaAvaliacaoLocal(avaliacoesLocal, quantAvLocal);
+        if(media > 0){
+            return media;
+        }else{
+            return -1.0;
+        }
+    }
+    public List<Double> calcularMediaAvaliacaoShows(List<Show> shows){
         List<Evento> eventos = new ArrayList<>();
-        for(int i=0;i<filmes.size();i++){
-            eventos.add(filmes.get(i));
+        for(int i=0;i<shows.size();i++){
+            eventos.add(shows.get(i));
         }
         List<Double> medias = evento.calcularMediaAvaliacaoEvento(eventos);
         if(medias != null){
@@ -113,26 +121,8 @@ public class EventoController {
         }
     }
 
-    public List<Double> calcularMediaAvaliacaoHorario(List<Integer> avaliacoesHorarios, List<Integer> quantAvHorarios){
-        List<Double> medias = evento.calcularMediaAvaliacaoHorario(avaliacoesHorarios, quantAvHorarios);
-        if(medias != null){
-            System.out.println ("Medias calculadas com sucesso!");
-            return medias;
-        }else{
-            System.out.println ("Erro ao cacular médias!");
-            return null;
-        }
-    }
-    public ArrayList<String> calcularRanking(List<Evento> filmesEmCartaz){
-        ArrayList<String> ranking = evento.calcularRanking(filmesEmCartaz);
-        if(ranking != null){
-            return ranking;
-        }else{
-            return null;
-        }
-    }
-    public ArrayList<String> calcularRankingHorarios(List<String> horarios, List<Integer> avaliacoesHorarios, List<Integer> quantAvHorarios){
-        ArrayList<String> ranking = evento.calcularRankingHorarios(horarios, avaliacoesHorarios, quantAvHorarios);
+    public ArrayList<String> calcularRanking(List<Evento> showsEmCartaz){
+        ArrayList<String> ranking = evento.calcularRanking(showsEmCartaz);
         if(ranking != null){
             return ranking;
         }else{
