@@ -25,7 +25,6 @@ public class ClienteGUI {
             System.out.println("4 - Resgatar Premio");
             System.out.println("5 - Avaliar show");
             System.out.println("6 - Avaliar serviço");
-            System.out.println("7 - Avaliar local");
             System.out.println("8 - Compartilhar Cupom");
             System.out.println("9 - Sair");
             String Sop = in.nextLine();
@@ -147,7 +146,7 @@ public class ClienteGUI {
                         for(Premio p: cliente.getPremios())
                             clienteController.resgatarPremio(cliente, p.getIdPremio());
                         break;
-                /*case 5: System.out.println("Digite o código do show:");
+                case 5: System.out.println("Digite o código do show:");
                         int codigoFilme = -1;
                         String ScodigoFilme = in.nextLine();
                         if(!ScodigoFilme.isEmpty())
@@ -155,15 +154,20 @@ public class ClienteGUI {
                         if(codigoFilme < 0 || codigoFilme-1 >= EvMusicalRepository.getShowsEmCartaz().size()){
                             System.out.println("Código digitado não possui show cadastrado");
                         }else{
-                            System.out.println("Digite a sua avaliação de 0 a 5:");
+                            System.out.println("Digite a sua avaliação do Show 0 a 5:");
                             int avaliacao =-1;
                             ScodigoFilme = in.nextLine();
                             if(!ScodigoFilme.isEmpty())
                                 avaliacao = Integer.parseInt(ScodigoFilme);
-                            status = clienteController.avaliarEvento(CinemaRepository.getFilmesEmCartaz().get(codigoFilme-1), avaliacao);
+                            System.out.println("Digite a sua avaliação do local de 0 a 5:");
+                            int avaliacao2 =-1;
+                            ScodigoFilme = in.nextLine();
+                            if(!ScodigoFilme.isEmpty())
+                                avaliacao2 = Integer.parseInt(ScodigoFilme);
+                            status = clienteController.avaliarEvento(EvMusicalRepository.getShowsEmCartaz().get(codigoFilme-1), avaliacao, avaliacao2);
                             System.out.println(status);
                         }
-                        break;*/
+                        break;
                 case 6: System.out.println("Digite a avaliação do serviço de 0 a 5:");
                         String SavServico = in.nextLine();
                         int avSercivo = -1;
@@ -172,15 +176,6 @@ public class ClienteGUI {
                         status = clienteController.avaliarServico(avSercivo);
                         System.out.println(status);
                         break;
-                 case 7: System.out.println("Digite a avaliação do Local de 0 a 5:");
-                        String SavServico = in.nextLine();
-                        int avSercivo = -1;
-                        if(!SavServico.isEmpty())
-                            avSercivo = Integer.parseInt(SavServico);
-                        status = clienteController.avaliarLocal(avSercivo);
-                        System.out.println(status);
-                        break;
-                    break;
                 case 8: clienteController.compartilharCupom(cliente);
                 case 9: break;
                 default: System.out.println("opção inválida");
