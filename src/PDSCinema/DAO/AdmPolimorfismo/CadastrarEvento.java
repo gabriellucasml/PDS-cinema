@@ -14,4 +14,12 @@ public class CadastrarEvento {
         filme.setDiaDeEstreia(diaDeEstreia);
         CinemaRepository.getFilmesEmCartaz().add(filme);
     }
+    public void cadastrarEvento(String name, int duracao, String atracaoMusical, String data) {
+        Show show = new Show();
+        show.setName(name);
+        show.setDuracao(duracao);
+        show.setAtracaoMusical(atracaoMusical);
+        show.setData(data);
+        EvMusicalRepository.getShowsEmCartaz().add(show);
+    }
 }
