@@ -2,9 +2,9 @@ package PDSCinema.View;
 
 import PDSCinema.Controller.AdministradorController;
 import PDSCinema.model.Cupom;
-import PDSCinema.model.Filme;
+import PDSCinema.model.Show;
 import PDSCinema.model.Premio;
-import PDSCinema.repository.CinemaRepository;
+import PDSCinema.repository.EvMusicalRepository;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -19,10 +19,9 @@ public class AdministradorGUI {
         do{
 
             System.out.println("O que deseja fazer?");
-            System.out.println("1 - Inserir Filme");
-            System.out.println("2 - Buscar Filme");
-            System.out.println("3 - Buscar filme por gênero");
-            System.out.println("4 - Remover Filme");
+            System.out.println("1 - Inserir Show");
+            System.out.println("2 - Buscar Show");
+            System.out.println("4 - Remover Show");
             System.out.println("5 - Inserir Cupom");
             System.out.println("6 - Buscar Cupons");
             System.out.println("7 - Remover Cupom");
@@ -33,7 +32,7 @@ public class AdministradorGUI {
             String Sop = in.nextLine();
             if(!Sop.isEmpty())
                 op = Integer.parseInt(Sop);
-            String nome, sinopse, classificacaoIndicativa, genero, diaDeEstreia, status;
+            String name, atracaoMusical, data, status;
 
             int codigoPremio = 0, duracao = 0, condicaoPremio = 0;
             double tipoCupom = 0;
@@ -41,24 +40,20 @@ public class AdministradorGUI {
                 case 1:
                     int sel = 1;
                     do {
-                        System.out.println("Digite o nome do filme: ");
+                        System.out.println("Digite o nome do show: ");
                         nome = in.nextLine();
-                        System.out.println("Digite a duracao do filme: ");
+                        System.out.println("Digite a duracao do show: ");
                         String Sduracao = in.nextLine();
                         if(!Sduracao.isEmpty())
                             duracao = Integer.parseInt(Sduracao);
-                        System.out.println("Digite a sinopse: ");
-                        sinopse = in.nextLine();
-                        System.out.println("Digite a classificação indicativa: ");
-                        classificacaoIndicativa = in.nextLine();
-                        System.out.println("Digite o genero:");
-                        genero = in.nextLine();
-                        System.out.println("Digite o dia da estreia:");
-                        diaDeEstreia = in.nextLine();
-                        status = administradorController.cadastrarEvento(nome,
-                                duracao, sinopse, classificacaoIndicativa, genero, diaDeEstreia);
+                        System.out.println("Digite a atração Musical: ");
+                        atracaoMusical = in.nextLine();
+                        System.out.println("Digite a data:");
+                        data = in.nextLine();
+                        status = administradorController.cadastrarEvento(name,
+                                duracao, atracaoMusical, data);
                         System.out.println(status);
-                        System.out.println("Deseja continuar cadastrando outros filmes?\n0 - não\n1 - sim");
+                        System.out.println("Deseja continuar cadastrando outros shows?\n0 - não\n1 - sim");
                         String Ssel = in.nextLine();
                         if(!Ssel.isEmpty())
                             sel = Integer.parseInt(Ssel);
@@ -68,39 +63,23 @@ public class AdministradorGUI {
                     }while(sel == 1);
                     break;
                 case 2:
-                    System.out.println("Digite o nome do filme:");
+                    System.out.println("Digite o nome do show:");
                     nome = in.nextLine();
-                    Filme filme = (Filme) administradorController.buscarEvento(nome);
+                    Show show = (Show) administradorController.buscarEvento(nome);
                     if(filme != null){
                         System.out.println("Informações encontradas:");
-                        System.out.println("Nome: " + filme.getName());
-                        System.out.println("Duração do filme: " + filme.getDuracao()+"min");
-                        System.out.println("Sinopsse: " + filme.getSinopse());
-                        System.out.println("Classificação indicativa: " + filme.getClassificacaoIndicativa());
-                        System.out.println("Gênero:" + filme.getGenero());
-                        System.out.println("Dia de estreia: " + filme.getDiaDeEstreia());
+                        System.out.println("Nome: " + show.getName());
+                        System.out.println("Duração do filme: " + show.getDuracao()+"min");
+                        System.out.println("Atração Musical: " + show.getAtracaoMusical());
+                        System.out.println("Data: " + show.getData());
                     }else{
-                        System.out.println("Filme não encontrado.");
+                        System.out.println("Show não encontrado.");
                     }
                     break;
-                case 3:
-                    System.out.println("Digite o nome do genero:");
-                    genero = in.nextLine();
-                    ArrayList<Filme> filmeGenero = administradorController.buscarFilmeGenero(genero);
-                    if(!filmeGenero.isEmpty()){
-                        System.out.println("Filmes encontrados do genero " + genero + ":");
-                        for(Filme f : filmeGenero){
-                            System.out.println("- " + f.getName());
-                        }
-                    }else{
-                        System.out.println("Nenhum filme do gênero " + genero + " foi encontrado.");
-                    }
-                    break;
-
                 case 4:
-                    System.out.println("Digite o nome do filme:");
-                    String nomeFilme = in.nextLine();
-                    Filme f = (Filme) administradorController.buscarEvento(nomeFilme);
+                    System.out.println("Digite o nome do show:");
+                    String nomeShow = in.nextLine();
+                    Show f = (Show) administradorController.buscarEvento(nomeShow);
                     status = administradorController.removerEvento(f);
                     System.out.println(status);
                     break;
