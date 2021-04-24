@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class CinemaGUI {
-    public CinemaGUI() {
+public class EvMusicalGUI {
+    public EvMusicalGUI() {
         EventoController eventoController = new EventoController();
         AdministradorController admi = new AdministradorController();
         preencherEvMusical(eventoController, admi);
