@@ -2,9 +2,9 @@ package PDSCinema.service;
 
 
 import PDSCinema.model.Administrador;
-import PDSCinema.repository.CinemaRepository;
+import PDSCinema.repository.EvMusicalRepository;
 import PDSCinema.model.Cliente;
-import PDSCinema.model.Filme;
+import PDSCinema.model.Administrador;
 
 import java.util.ArrayList;
 import java.util.List;
