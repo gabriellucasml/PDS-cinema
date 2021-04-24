@@ -19,6 +19,7 @@ public interface iEventoService {
     Administrador buscarADM(String cpf);
     List <Administrador> buscarTodosADM();
     Double calcularMediaAvaliacaoServico(int avaliacoesServico, int quantAvServico);
+    Double calcularMediaAvaliacaoLocal(int avaliacoesLocal, int quantAvLocal)
     List<Double> calcularMediaAvaliacaoHorario(List<Integer> avaliacoesHorarios, List<Integer> quantAvHorarios);
     ArrayList<String> calcularRankingHorarios(List<String> horarios, List<Integer> avaliacoesHorarios, List<Integer> quantAvHorarios);
 }
