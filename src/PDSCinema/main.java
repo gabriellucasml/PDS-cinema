@@ -1,9 +1,9 @@
 package PDSCinema;
 
-import PDSCinema.View.CinemaGUI;
+import PDSCinema.View.EvMusicalGUI;
 
 public class main {
     public static void main(String[] args){
-        CinemaGUI cinemaGUI = new CinemaGUI();
+       EvMusicalGUI evMusicalGUI = new EvMusicalGUI();
     }
 }
