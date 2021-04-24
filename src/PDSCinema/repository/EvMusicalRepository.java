@@ -10,8 +10,6 @@ import java.util.List;
 public class EvMusicalRepository extends EventoRepository{
 
     private static List<Show> ShowsEmCartaz = new ArrayList<>();
-    private static List<Integer> avaliacaoesShow = new ArrayList<>();
-    private static int qntAvaliacoesShow;
     private static int avaliacoesLocal;
     private static int qntAvaliacoesLocal;
 
