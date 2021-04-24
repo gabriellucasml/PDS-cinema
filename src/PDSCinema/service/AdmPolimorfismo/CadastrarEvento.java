@@ -29,6 +29,25 @@ public class CadastrarEvento {
             return -2;
         }
     }
+    
+    public int cadastrarEvento(String name, int duracao, String atracaoMusical, String data) {
+        try{
+            if(!name.isEmpty() && !atracaoMusical.isEmpty()&& !data.isEmpty()){
+                if(duracao >= 0){
+                    admDAO.getCadastrarEvento().cadastrarEvento(name, duracao, atracaoMusical, data);
+                    return 0;
+                }else{
+                    throw new NumberFormatException();
+                }
+            }else{
+                throw new IOException();
+            }
+        }catch (IOException e){
+            return -1;
+        }catch (NumberFormatException e){
+            return -2;
+        }
+    }
 
 
 }
