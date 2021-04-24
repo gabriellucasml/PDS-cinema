@@ -5,8 +5,8 @@ import PDSCinema.Controller.EventoController;
 import PDSCinema.model.Administrador;
 import PDSCinema.model.Cliente;
 import PDSCinema.model.Evento;
-import PDSCinema.model.Filme;
-import PDSCinema.repository.CinemaRepository;
+import PDSCinema.model.Show;
+import PDSCinema.repository.EvMusicalRepository;
 import PDSCinema.repository.EventoRepository;
 
 import java.util.ArrayList;
@@ -17,11 +17,11 @@ public class CinemaGUI {
     public CinemaGUI() {
         EventoController eventoController = new EventoController();
         AdministradorController admi = new AdministradorController();
-        preencherCinema(eventoController, admi);
+        preencherEvMusical(eventoController, admi);
         boolean val = true;
         Cliente cliente = new Cliente();
         while (val) {
-            System.out.println("Bem vindo ao cinema!");
+            System.out.println("Bem vindo!");
             System.out.println("Escolha a opção:");
             System.out.println("1 - Entrar como administrador");
             System.out.println("2 - Entrar como cliente");
@@ -201,8 +201,8 @@ public class CinemaGUI {
                     do {
                         System.out.println("Escolha qual ranking você deseja ver:");
                         System.out.println("1 - Nota serviços");
-                        System.out.println("2 - Horários");
-                        System.out.println("3 - Filmes");
+                        System.out.println("2 - Nota Local");
+                        System.out.println("3 - Shows");
                         String Sescolha = in.nextLine();
                         if (!Sescolha.isEmpty())
                             escolha = Integer.parseInt(Sescolha);
@@ -217,15 +217,18 @@ public class CinemaGUI {
                                 }
                                 break;
                             case 2:
-                                ranking = eventoController.calcularRankingHorarios(CinemaRepository.getHorarios(), CinemaRepository.getAvaliacoesHorarios(), CinemaRepository.getQuantAvHorarios());
-                                for(int i=ranking.size()-1;i>=0;i--){
-                                    System.out.println(i + " - " + ranking.get(i) + " Media: " + EventoRepository.getMedias().get(i));
+                                double media = eventoController.calcularMediaAvaliacaoLocal(EvMusicalRepository.getAvaliacoesLocal(), EvMusicalRepository. getQntAvaliacoesLocal());
+                                if(media > 0){
+                                    System.out.println("Média: " + media);
+                                }else{
+                                    System.out.println("Média não foi calculada");
+                                    System.out.println("Nenhuma avaliação foi realizada para o local");
                                 }
                                 break;
                             case 3:
                                 ArrayList<Evento> eventos = new ArrayList<>();
-                                for(Filme filme : CinemaRepository.getFilmesEmCartaz()){
-                                    eventos.add((Evento) filme);
+                                for(Show show : EvMusicalRepository.getShowsEmCartaz()){
+                                    eventos.add((Evento) show);
                                 }
                                 ranking = eventoController.calcularRanking(eventos);
                                 for(int i=ranking.size()-1; i>=0;i--){
@@ -246,8 +249,8 @@ public class CinemaGUI {
         }
     }
 
-    private static void preencherCinema(EventoController cinema, AdministradorController admi){
-        cinema.inserirADM( "Gabriel Lucas", "123456");
+    private static void preencherEvMusical(EventoController cinema, AdministradorController admi){
+    /*    cinema.inserirADM( "Gabriel Lucas", "123456");
         cinema.inserirADM( "Acsa Laiane", "789456");
         cinema.inserirADM( "Gabriel Martins", "456789");
         cinema.inserirCliente( "Gabriel Lucas", "123456");
@@ -260,6 +263,6 @@ public class CinemaGUI {
         admi.cadastrarEvento( "Narnia", 120, "Crianças brincando no guardarroupas", "14",
                 "Fantasia", "01/10/2000");
         admi.cadastrarCupons( "marco20", 20.00);
-        admi.cadastrarPremios( "Pipoca grátis", 76, 1);
+        admi.cadastrarPremios( "Pipoca grátis", 76, 1);*/
     }
 }
